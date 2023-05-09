@@ -1,0 +1,430 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Dokumentasi Sales App",
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "User Login",
+                "description": "Login User Here",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/rencana-perjalanan": {
+            "post": {
+                "tags": [
+                    "Pencatatan KM Awal"
+                ],
+                "summary": "Pencatatan KM Awal",
+                "description": "Pencatatan KM Awal",
+                "operationId": "Pencatatan KM Awal",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "user_sales_id",
+                                    "km_awal"
+                                ],
+                                "properties": {
+                                    "user_sales_id": {
+                                        "type": "user_sales_id"
+                                    },
+                                    "km_awal": {
+                                        "type": "km_awal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil merekam KM Awal",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Berhasil merekam KM Awal",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Terjadi kesalahan",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Pengguna tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/list-customer-tujuan/{sales_id}/{perjalanan_id}": {
+            "get": {
+                "tags": [
+                    "Customer Tujuan"
+                ],
+                "description": "Menampilkan List Perjalanan Sales",
+                "operationId": "SalesIDPerjalananID",
+                "parameters": [
+                    {
+                        "name": "sales_id",
+                        "in": "path",
+                        "description": "Sales Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perjalanan_id",
+                        "in": "path",
+                        "description": "Perjalanan Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/list-perjalanan-sales/{sales_id}": {
+            "get": {
+                "tags": [
+                    "List Perjalanan"
+                ],
+                "description": "Menampilkan List Perjalanan Sales",
+                "operationId": "getOrderById",
+                "parameters": [
+                    {
+                        "name": "sales_id",
+                        "in": "path",
+                        "description": "Sales Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/kirim-produk/": {
+            "post": {
+                "tags": [
+                    "Pengiriman Produk"
+                ],
+                "summary": "Pengiriman Produk",
+                "description": "Pengiriman Produk",
+                "operationId": "Pengiriman Produk",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "perjalanan_id",
+                                    "customer_id",
+                                    "produk_id",
+                                    "kuantitas",
+                                    "total_harga"
+                                ],
+                                "properties": {
+                                    "perjalanan_id": {
+                                        "type": "Integer"
+                                    },
+                                    "customer_id": {
+                                        "type": "Integer"
+                                    },
+                                    "produk_id": {
+                                        "type": "Integer"
+                                    },
+                                    "kuantitas": {
+                                        "type": "Integer"
+                                    },
+                                    "total_harga": {
+                                        "type": "String"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil merekam KM Awal",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Berhasil merekam KM Awal",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Terjadi kesalahan",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Pengguna tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tambah-rute-perjalanan": {
+            "post": {
+                "tags": [
+                    "Tambah Rute Perjalanan"
+                ],
+                "summary": "Tambah Rute Perjalanan",
+                "description": "Proses Menambah Data Rute Perjalanan",
+                "operationId": "Tambah Rute Perjalanan",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "perjalanan_id",
+                                    "customer_id"
+                                ],
+                                "properties": {
+                                    "perjalanan_id": {
+                                        "type": "customer_id"
+                                    },
+                                    "customer_id": {
+                                        "type": "customer_id"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil Menambahkan Rute",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Berhasil Menambahkan Rute",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Terjadi kesalahan",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detail-pesanan-barang-customer/{sales_id}/{perjalanan_id}/{customer_id}": {
+            "get": {
+                "tags": [
+                    "Detail Pengiriman Barang Ke Customer"
+                ],
+                "description": "Detail Pengiriman Barang Ke Customer",
+                "operationId": "getSalesPerjalananCustomer",
+                "parameters": [
+                    {
+                        "name": "sales_id",
+                        "in": "path",
+                        "description": "Sales Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perjalanan_id",
+                        "in": "path",
+                        "description": "Perjalanan Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "customer_id",
+                        "in": "path",
+                        "description": "Customer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    }
+}
